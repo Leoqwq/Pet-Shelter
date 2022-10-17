@@ -18,11 +18,11 @@ public class Shelter {
         for (Pet pet : listOfPet) {
             if (pet.getName().equals(name)) {
                 if (pet.getIsAvailable()) {
-                    removePet(pet);
+                    listOfPet.remove(pet);
                     numOfAdopted++;
                     return pet.getName() + " has been successfully adopted!";
                 } else {
-                    return "Sorry, " + pet.getName() + " is currently not available for adoption...";
+                    return "Sorry, " + pet.getName() + " is currently unavailable for adoption...";
                 }
             }
         }
@@ -31,10 +31,6 @@ public class Shelter {
 
     public void addPet(Pet pet) {
         listOfPet.add(pet);
-    }
-
-    public void removePet(Pet pet) {
-        listOfPet.remove(pet);
     }
 
     public String markPetAsAvailable(String name) {
@@ -60,12 +56,12 @@ public class Shelter {
     }
 
     public String getShelterInfo() {
-        return "The number of pets in the shelter: " + getNumOfPetsInShelter()
+        return "The number of pets in the shelter: " + listOfPet.size()
                 + "\nThe number of adopted pets: " + getNumOfAdopted();
     }
 
-    public int getNumOfPetsInShelter() {
-        return listOfPet.size();
+    public ArrayList<Pet> getListOfPets() {
+        return listOfPet;
     }
 
     public int getNumOfAdopted() {

@@ -31,7 +31,7 @@ public class Pet {
         if (isAvailable == true) {
             return name + " is a " + age + " years old " + sex + " " +  species + ". (available for adoption)";
         } else {
-            return name + " is a " + age + " years old " + sex + " " + species + ". (not available for adoption)";
+            return name + " is a " + age + " years old " + sex + " " + species + ". (unavailable for adoption)";
         }
     }
 
