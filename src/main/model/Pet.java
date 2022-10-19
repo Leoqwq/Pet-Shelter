@@ -9,7 +9,7 @@ public class Pet {
     private boolean isAvailable;     // whether a pet is available for adoption or not
 
 
-    // REQUIRES: age is non-negative
+    // REQUIRES: age is non-negative, sex is either "male" or "female"
     // EFFECTS: name of the pet is set to color given in the parameter;
     //          sex of the pet is set to pet given in the parameter;
     //          age of the pet is set to age given in the parameter which is a non-negative integer;
@@ -23,10 +23,13 @@ public class Pet {
         this.isAvailable = isAvailable;
     }
 
+    // MODIFIES: this
+    // EFFECTS: Changes a pet to available for adoption if it is not available, otherwise do nothing.
     public void markAsAvailable() {
         isAvailable = true;
     }
 
+    // EFFECTS: Returns a string that contains all the information about a pet
     public String getPetInfo() {
         if (isAvailable == true) {
             return name + " is a " + age + " years old " + sex + " " +  species + ". (available for adoption)";
