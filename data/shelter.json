@@ -1,0 +1,16 @@
+{"pets": [
+    {
+        "isAvailable": false,
+        "species": "cat",
+        "sex": "male",
+        "name": "tom",
+        "age": 3
+    },
+    {
+        "isAvailable": false,
+        "species": "mouse",
+        "sex": "male",
+        "name": "jerry",
+        "age": 1
+    }
+]}
