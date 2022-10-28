@@ -22,9 +22,14 @@
 > new home.
 
 ## User Stories
-> - As a user, I want to be able to add a pet to my shelter
-> - As a user, I want to be able to view the list of pets in my shelter
-> - As a user, I want to be able to mark a pet as available for adoption
-> - As a user, I want to be able to remove a pet from my shelter
+> - As a user, I want to be able to add a pet to my shelter.
+> - As a user, I want to be able to view the list of pets in my shelter.
+> - As a user, I want to be able to mark a pet as available for adoption.
+> - As a user, I want to be able to remove a pet from my shelter.
 > - As a user, I want to be able to see the number of pets in my shelter 
-> and the number of pets that have been adopted
+> and the number of pets that have been adopted.
+> - As a user, when I select the quit option from the application menu,
+> I want to be reminded to save my shelter list to file and have the *option*
+> to do so or not.
+> - As a user, when I start the application, I want to be given the *option*
+> to load my shelter list from file.
