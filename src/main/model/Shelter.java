@@ -1,16 +1,18 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 
 // Represents a list of pets that are in the shelter
-public class Shelter {
+public class Shelter implements Writable {
     private ArrayList<Pet> listOfPet;
-    private int numOfAdopted;
 
     // EFFECTS: Creates a new listOfPet and set the initial value of numOfAdopted to 0.
     public Shelter() {
         listOfPet = new ArrayList<Pet>();
-        numOfAdopted = 0;
     }
 
     // MODIFIES: this
@@ -22,7 +24,6 @@ public class Shelter {
             if (pet.getName().equals(name)) {
                 if (pet.getIsAvailable()) {
                     listOfPet.remove(pet);
-                    numOfAdopted++;
                     return pet.getName() + " has been successfully adopted!";
                 } else {
                     return "Sorry, " + pet.getName() + " is currently unavailable for adoption...";
@@ -67,15 +68,32 @@ public class Shelter {
 
     // EFFECTS: returns a string that shows the number of pets in the shelter and the number of adopted pets.
     public String getShelterInfo() {
-        return "The number of pets in the shelter: " + listOfPet.size()
-                + "\nThe number of adopted pets: " + getNumOfAdopted();
+        return "The number of pets in the shelter: " + getNumOfPetInShelter();
     }
 
     public ArrayList<Pet> getListOfPets() {
         return listOfPet;
     }
 
-    public int getNumOfAdopted() {
-        return numOfAdopted;
+    public int getNumOfPetInShelter() {
+        return listOfPet.size();
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("pets", shelterToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray shelterToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Pet p : listOfPet) {
+            jsonArray.put(p.toJson());
+        }
+
+        return jsonArray;
     }
 }

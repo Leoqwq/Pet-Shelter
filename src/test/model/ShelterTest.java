@@ -2,6 +2,8 @@ package model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 import java.util.ArrayList;
 
@@ -30,7 +32,6 @@ public class ShelterTest {
         assertTrue(testShelter1.getListOfPets().contains(maple));
         assertTrue(testShelter1.getListOfPets().contains(tom));
         assertTrue(testShelter1.getListOfPets().contains(jerry));
-        assertEquals(0, testShelter1.getNumOfAdopted());
     }
 
     @Test
@@ -39,19 +40,16 @@ public class ShelterTest {
         String result1 = testShelter1.adopt("Tom");
         assertEquals("Tom has been successfully adopted!", result1);
         assertEquals(2, testShelter1.getListOfPets().size());
-        assertEquals(1, testShelter1.getNumOfAdopted());
 
         // Test adopt unavailable pet
         String result2 = testShelter1.adopt("Jerry");
         assertEquals("Sorry, Jerry is currently unavailable for adoption...", result2);
         assertEquals(2, testShelter1.getListOfPets().size());
-        assertEquals(1, testShelter1.getNumOfAdopted());
 
         // Test adopt pet that is not in the shelter
         String result3 = testShelter2.adopt("Tom");
         assertEquals("Sorry, we couldn't find Tom in the shelter, please try again...", result3);
         assertEquals(0, testShelter2.getListOfPets().size());
-        assertEquals(0, testShelter2.getNumOfAdopted());
     }
 
     @Test
@@ -110,11 +108,6 @@ public class ShelterTest {
                 "\nThe number of adopted pets: 0";
 
         assertEquals(expected2, result2);
-    }
-
-    @Test
-    public void testGetNumOfAdopted() {
-        assertEquals(0, testShelter1.getNumOfAdopted());
     }
 
     @Test

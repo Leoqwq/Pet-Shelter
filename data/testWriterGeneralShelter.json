@@ -1,0 +1,16 @@
+{"Shelter": [
+    {
+        "isAvailable": false,
+        "species": "mouse",
+        "sex": "male",
+        "name": "Jerry",
+        "age": 2
+    },
+    {
+        "isAvailable": true,
+        "species": "cat",
+        "sex": "male",
+        "name": "Tom",
+        "age": 3
+    }
+]}
