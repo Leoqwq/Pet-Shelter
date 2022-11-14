@@ -27,8 +27,4 @@
 > - As a user, I want to be able to mark a pet as available for adoption.
 > - As a user, I want to be able to remove a pet from my shelter.
 > - As a user, I want to be able to see the number of pets in my shelter.
-> - As a user, when I select the quit option from the application menu,
-> I want to be reminded to save my shelter list to file and have the *option*
-> to do so or not.
-> - As a user, when I start the application, I want to be given the *option*
-> to load my shelter list from file.
+> - As a user, I want to be able to *load* and *save* the state of the application.
