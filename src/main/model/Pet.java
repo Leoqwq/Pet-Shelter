@@ -41,6 +41,18 @@ public class Pet implements Writable {
         }
     }
 
+    // EFFECTS: Returns this pet as a JSONObject
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("species", species);
+        json.put("sex", sex);
+        json.put("age", age);
+        json.put("isAvailable", isAvailable);
+        return json;
+    }
+
     public String getName() {
         return name;
     }
@@ -59,16 +71,5 @@ public class Pet implements Writable {
 
     public boolean getIsAvailable() {
         return isAvailable;
-    }
-
-    @Override
-    public JSONObject toJson() {
-        JSONObject json = new JSONObject();
-        json.put("name", name);
-        json.put("species", species);
-        json.put("sex", sex);
-        json.put("age", age);
-        json.put("isAvailable", isAvailable);
-        return json;
     }
 }

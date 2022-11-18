@@ -12,5 +12,12 @@
         "sex": "male",
         "name": "jerry",
         "age": 1
+    },
+    {
+        "isAvailable": true,
+        "species": "dog",
+        "sex": "male",
+        "name": "maple",
+        "age": 2
     }
 ]}

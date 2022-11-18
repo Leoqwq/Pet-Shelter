@@ -19,18 +19,18 @@ public class Shelter implements Writable {
     // EFFECTS: Removes a pet from listOfPet with given name in the parameter, increases numOfAdopted by 1 and
     //          returns a string represents successful adoption; if the pet is not found in the list,
     //          do nothing and returns a string represents pet not found.
-    public String adopt(String name) {
+    public String adopt(String name) throws PetNotAvailableException, PetNotFoundException {
         for (Pet pet : listOfPet) {
             if (pet.getName().equals(name)) {
                 if (pet.getIsAvailable()) {
                     listOfPet.remove(pet);
                     return pet.getName() + " has been successfully adopted!";
                 } else {
-                    return "Sorry, " + pet.getName() + " is currently unavailable for adoption...";
+                    throw new PetNotAvailableException("Sorry, " + pet.getName() + " is currently unavailable for adoption...");
                 }
             }
         }
-        return "Sorry, we couldn't find " + name + " in the shelter, please try again...";
+        throw new PetNotFoundException("Sorry, we couldn't find the pet in the shelter");
     }
 
     // MODIFIES: this
@@ -79,6 +79,7 @@ public class Shelter implements Writable {
         return listOfPet.size();
     }
 
+    // EFFECTS: Returns this shelter as a JSONObject.
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
