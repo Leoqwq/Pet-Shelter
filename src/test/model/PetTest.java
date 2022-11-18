@@ -37,7 +37,7 @@ public class PetTest {
     @Test
     public void testGetPetInfo() {
         String info1 = "Tom is a 3 years old male cat. (available for adoption)";
-        String info2 = "Jerry is a 2 years old male mouse. (not available for adoption)";
+        String info2 = "Jerry is a 2 years old male mouse. (unavailable for adoption)";
 
         assertEquals(info1, testPet1.getPetInfo());
         assertEquals(info2, testPet2.getPetInfo());

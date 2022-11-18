@@ -37,19 +37,36 @@ public class ShelterTest {
     @Test
     public void testAdopt() {
         // Test adopt available pet
-        String result1 = testShelter1.adopt("Tom");
-        assertEquals("Tom has been successfully adopted!", result1);
-        assertEquals(2, testShelter1.getListOfPets().size());
+        try {
+            String result1 = testShelter1.adopt("Tom");
+            assertEquals("Tom has been successfully adopted!", result1);
+            assertEquals(2, testShelter1.getListOfPets().size());
+        } catch (PetNotFoundException e) {
+            fail();
+        } catch (PetNotAvailableException e) {
+            fail();
+        }
 
         // Test adopt unavailable pet
-        String result2 = testShelter1.adopt("Jerry");
-        assertEquals("Sorry, Jerry is currently unavailable for adoption...", result2);
-        assertEquals(2, testShelter1.getListOfPets().size());
+        try {
+            testShelter1.adopt("Jerry");
+        } catch (PetNotAvailableException e) {
+            assertEquals("Sorry, Jerry is currently unavailable for adoption...",
+                    e.getMessage());
+            assertEquals(2, testShelter1.getListOfPets().size());
+        } catch (PetNotFoundException e) {
+            fail();
+        }
 
         // Test adopt pet that is not in the shelter
-        String result3 = testShelter2.adopt("Tom");
-        assertEquals("Sorry, we couldn't find Tom in the shelter, please try again...", result3);
-        assertEquals(0, testShelter2.getListOfPets().size());
+        try {
+            testShelter2.adopt("Tom");
+        } catch (PetNotFoundException e) {
+            assertEquals("Sorry, we couldn't find the pet in the shelter", e.getMessage());
+            assertEquals(0, testShelter2.getListOfPets().size());
+        } catch (PetNotAvailableException e) {
+            fail();
+        }
     }
 
     @Test
@@ -95,17 +112,14 @@ public class ShelterTest {
     @Test
     public void testGetShelterInfo() {
         // Test get shelter info with 2 pets in the shelter and 1 adopted record
-        testShelter1.adopt("Maple");
         String result1 = testShelter1.getShelterInfo();
-        String expected1 = "The number of pets in the shelter: 2" +
-                          "\nThe number of adopted pets: 1";
+        String expected1 = "The number of pets in the shelter: 3";
 
         assertEquals(expected1, result1);
 
         // Test get an empty shelter info
         String result2 = testShelter2.getShelterInfo();
-        String expected2 = "The number of pets in the shelter: 0" +
-                "\nThe number of adopted pets: 0";
+        String expected2 = "The number of pets in the shelter: 0";
 
         assertEquals(expected2, result2);
     }
