@@ -86,47 +86,27 @@ public class MainWindow extends JFrame implements ActionListener {
         add(selectOptionLabel);
         selectOptionLabel.setForeground(Color.black);
 
-        JButton adoptPetButton = new JButton("Adopt Pet");
-        adoptPetButton.setBounds(BUTTON_POSITION, 40, BUTTON_WIDTH, BUTTON_HEIGHT);
-        add(adoptPetButton);
-        adoptPetButton.setActionCommand(ADOPT_PET_ACTION);
-        adoptPetButton.addActionListener(this);
-        adoptPetButton.setForeground(Color.black);
+        this.setButton(new JButton("Adopt Pet"), ADOPT_PET_ACTION, 40);
 
-        JButton addPetButton = new JButton("Add Pet");
-        addPetButton.setBounds(BUTTON_POSITION, 80, BUTTON_WIDTH, BUTTON_HEIGHT);
-        add(addPetButton);
-        addPetButton.setActionCommand(ADD_PET_ACTION);
-        addPetButton.addActionListener(this);
-        addPetButton.setForeground(Color.black);
+        this.setButton(new JButton("Add Pet"), ADD_PET_ACTION, 80);
 
-        JButton viewPetListButton = new JButton("View Pet List");
-        viewPetListButton.setBounds(BUTTON_POSITION, 160, BUTTON_WIDTH, BUTTON_HEIGHT);
-        add(viewPetListButton);
-        viewPetListButton.setActionCommand(VIEW_PET_LIST_ACTION);
-        viewPetListButton.addActionListener(this);
-        viewPetListButton.setForeground(Color.black);
+        this.setButton(new JButton("View Pet List"), VIEW_PET_LIST_ACTION, 160);
 
-        JButton saveButton = new JButton("Save");
-        saveButton.setBounds(BUTTON_POSITION, 240, BUTTON_WIDTH, BUTTON_HEIGHT);
-        add(saveButton);
-        saveButton.setActionCommand(SAVE_ACTION);
-        saveButton.addActionListener(this);
-        saveButton.setForeground(Color.black);
+        this.setButton(new JButton("Save"), SAVE_ACTION, 240);
 
-        JButton loadButton = new JButton("Load");
-        loadButton.setBounds(BUTTON_POSITION, 280, BUTTON_WIDTH, BUTTON_HEIGHT);
-        add(loadButton);
-        loadButton.setActionCommand(LOAD_ACTION);
-        loadButton.addActionListener(this);
-        loadButton.setForeground(Color.black);
+        this.setButton(new JButton("Load"), LOAD_ACTION, 280);
 
-        JButton quitAppButton = new JButton("Quit Pet Shelter Application");
-        quitAppButton.setBounds(BUTTON_POSITION, 360, BUTTON_WIDTH, BUTTON_HEIGHT);
-        add(quitAppButton);
-        quitAppButton.setActionCommand(QUIT_ACTION);
-        quitAppButton.addActionListener(this);
-        quitAppButton.setForeground(Color.black);
+        this.setButton(new JButton("Quit Pet Shelter Application"), QUIT_ACTION, 360);
+    }
+
+    // Modifies: this
+    // Effects: A helper method that adds a new button to the main window
+    private void setButton(JButton button, String action, int y) {
+        button.setBounds(BUTTON_POSITION, y, BUTTON_WIDTH, BUTTON_HEIGHT);
+        add(button);
+        button.setActionCommand(action);
+        button.addActionListener(this);
+        button.setForeground(Color.black);
     }
 
     // EFFECTS: Saves the shelter to file

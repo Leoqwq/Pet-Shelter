@@ -66,50 +66,21 @@ public class AddPetWindow extends JFrame implements ActionListener {
     // Modifies: this
     // Effects: Set up all the labels, buttons and text-fields for the window.
     private void setLabelsFieldsButtons() {
-        JLabel nameFieldLabel = new JLabel("Enter name: ");
-        nameFieldLabel.setBounds(48, 40, 400, 20);
-        add(nameFieldLabel);
-        nameFieldLabel.setForeground(Color.darkGray);
+        this.setLabel(new JLabel("Enter name: "), 48, 40, 400, 20);
+        this.setTextField(nameField,150, 40, 300, 20);
 
-        nameField = new JTextField(30);
-        nameField.setBounds(150, 40, 300, 20);
-        add(nameField);
+        this.setLabel(new JLabel("Enter species: "), 48, 70, 400, 20);
+        this.setTextField(speciesField, 150, 70, 200, 20);
 
-        JLabel speciesFieldLabel = new JLabel("Enter species: ");
-        speciesFieldLabel.setBounds(48, 70, 400, 20);
-        add(speciesFieldLabel);
-        speciesFieldLabel.setForeground(Color.darkGray);
+        this.setLabel(new JLabel("Enter sex(enter male or female): "), 48, 100, 400, 20);
+        this.setTextField(sexField, 250, 100, 300, 20);
 
-        speciesField = new JTextField(30);
-        speciesField.setBounds(150, 70,300,20);
-        add(speciesField);
+        this.setLabel(new JLabel("Enter age: "), 48, 130, 400, 20);
+        this.setTextField(ageField, 150, 130, 300, 20);
 
-        JLabel sexFieldLabel = new JLabel("Enter sex(enter male or female): ");
-        sexFieldLabel.setBounds(48,100,400,20);
-        add(sexFieldLabel);
-        sexFieldLabel.setForeground(Color.darkGray);
-
-        sexField = new JTextField(30);
-        sexField.setBounds(250,100,300,20);
-        add(sexField);
-
-        JLabel ageFieldLabel = new JLabel("Enter age: ");
-        ageFieldLabel.setBounds(48,130,400,20);
-        add(ageFieldLabel);
-        ageFieldLabel.setForeground(Color.darkGray);
-
-        ageField = new JTextField(30);
-        ageField.setBounds(150,130,300,20);
-        add(ageField);
-
-        JLabel isAvailableFieldLabel = new JLabel("Is the pet available for adoption?(enter true or false) ");
-        isAvailableFieldLabel.setBounds(48,160,400,20);
-        add(isAvailableFieldLabel);
-        isAvailableFieldLabel.setForeground(Color.darkGray);
-
-        isAvailableField = new JTextField(30);
-        isAvailableField.setBounds(48,190,300,20);
-        add(isAvailableField);
+        this.setLabel(new JLabel("Is the pet available for adoption?(enter true or false) "),
+                48, 160, 400, 20);
+        this.setTextField(isAvailableField, 48, 190, 300, 20);
 
         JButton finishButton = new JButton("Finish");
         finishButton.setBounds(310,300,100,20);
@@ -117,6 +88,22 @@ public class AddPetWindow extends JFrame implements ActionListener {
         finishButton.setActionCommand(FINISH_ACTION);
         finishButton.addActionListener(this);
         finishButton.setForeground(Color.darkGray);
+    }
+
+    // Modifies: this
+    // Effects: A helper method that adds a label to the window with given coordinate and size
+    public void setLabel(JLabel label, int x, int y, int width, int height) {
+        label.setBounds(x, y, width, height);
+        add(label);
+        label.setForeground(Color.darkGray);
+    }
+
+    // Modifies: this
+    // Effects: A helper method that adds a text field to the window with given coordinate and size
+    public void setTextField(JTextField tf, int x, int y, int width, int height) {
+        tf = new JTextField(30);
+        tf.setBounds(x, y, width, height);
+        add(tf);
     }
 
     // Modifies: this

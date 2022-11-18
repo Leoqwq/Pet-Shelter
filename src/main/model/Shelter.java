@@ -26,7 +26,8 @@ public class Shelter implements Writable {
                     listOfPet.remove(pet);
                     return pet.getName() + " has been successfully adopted!";
                 } else {
-                    throw new PetNotAvailableException("Sorry, " + pet.getName() + " is currently unavailable for adoption...");
+                    throw new PetNotAvailableException("Sorry, " + pet.getName()
+                            + " is currently unavailable for adoption...");
                 }
             }
         }
