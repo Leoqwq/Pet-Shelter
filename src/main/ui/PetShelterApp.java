@@ -68,15 +68,12 @@ public class PetShelterApp {
         System.out.println("------------------------------------------------------------------------------");
     }
 
-    // Requires: command is an integer from 1 to 7.
+    // Requires: command is an integer between 1 and 7.
     // Modifies: this
     // Effects: Adopts the pet with given name when the user enters '1';
     //          Adds the pet to the shelter with given information when the user enters '2';
     //          Marks a pet to be available with given name when the user enters '3';
-    //          Prints out a list of pets in the shelter when the user enters '4';
-    //          Prints out the shelter information when the user enters '5';
-    //          Saves the shelter to file when the user enters '6';
-    //          Loads the shelter from file when the user enters '7'.
+    //          Otherwise, call proceedCommand2() for option 4 - 7;
     private void proceedCommand(int command) {
         if (command == 1) {
             System.out.print("Please enter the name of the pet that you want to adopt: ");
@@ -96,7 +93,18 @@ public class PetShelterApp {
             System.out.print("Please enter the name of the pet that you want to mark as available: ");
             String name = input.nextLine();
             System.out.println(shelter.markPetAsAvailable(name));
-        } else if (command == 4) {
+        } else {
+            proceedCommand2(command);
+        }
+    }
+
+    // Requires: command is an integer between 4 and 7
+    // Effects: Prints out a list of pets in the shelter when the user enters '4';
+    //          Prints out the shelter information when the user enters '5';
+    //          Saves the shelter to file when the user enters '6';
+    //          Loads the shelter from file when the user enters '7'.
+    private void proceedCommand2(int command) {
+        if (command == 4) {
             System.out.println(shelter.viewTheListOfPet());
         } else if (command == 5) {
             System.out.println(shelter.getShelterInfo());
