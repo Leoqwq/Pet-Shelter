@@ -27,9 +27,7 @@ public class MainWindow extends JFrame implements ActionListener {
     private static final int BUTTON_HEIGHT = 20;
     private static final String ADOPT_PET_ACTION = "ADOPT_PET_ACTION";
     private static final String ADD_PET_ACTION = "ADD_PET_ACTION";
-    private static final String MARK_PET_AVAILABLE_ACTION = "MARK_PET_AVAILABLE_ACTION";
     private static final String VIEW_PET_LIST_ACTION = "VIEW_PET_LIST_ACTION";
-    private static final String VIEW_PET_NUM_ACTION = "VIEW_PET_NUM_ACTION";
     private static final String SAVE_ACTION = "SAVE_ACTION";
     private static final String LOAD_ACTION = "LOAD_ACTION";
     private static final String QUIT_ACTION = "QUIT_ACTION";
@@ -71,7 +69,7 @@ public class MainWindow extends JFrame implements ActionListener {
     // Effects: Set up the background image of the window.
     private void setBackgroundImage() {
         try {
-            BufferedImage backgroundImage = ImageIO.read(new File("src/main/ui/images/PetShelter.png"));
+            BufferedImage backgroundImage = ImageIO.read(new File("data/images/PetShelter.png"));
             setContentPane(new BackgroundImage(backgroundImage));
         } catch (IOException e) {
             e.printStackTrace();

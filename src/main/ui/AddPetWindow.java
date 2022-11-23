@@ -20,11 +20,11 @@ import java.io.IOException;
 
 // Represents a window that allows the user to add a pet to the shelter by entering pet's information.
 public class AddPetWindow extends JFrame implements ActionListener {
-    private JTextField nameField;
-    private JTextField speciesField;
-    private JTextField sexField;
-    private JTextField ageField;
-    private JTextField isAvailableField;
+    private JTextField nameField = new JTextField(30);
+    private JTextField speciesField = new JTextField(30);
+    private JTextField sexField = new JTextField(30);
+    private JTextField ageField = new JTextField(30);
+    private JTextField isAvailableField = new JTextField(30);
 
     private Shelter shelter;
     private static final String FINISH_ACTION = "FINISH_ACTION";
@@ -101,7 +101,6 @@ public class AddPetWindow extends JFrame implements ActionListener {
     // Modifies: this
     // Effects: A helper method that adds a text field to the window with given coordinate and size
     public void setTextField(JTextField tf, int x, int y, int width, int height) {
-        tf = new JTextField(30);
         tf.setBounds(x, y, width, height);
         add(tf);
     }
@@ -117,7 +116,7 @@ public class AddPetWindow extends JFrame implements ActionListener {
             String sex = sexField.getText();
             int age = Integer.parseInt(ageField.getText());
             boolean isAvailable = Boolean.parseBoolean(isAvailableField.getText());
-            shelter.addPet(new Pet(name, species, sex, age, isAvailable));
+            shelter.addPet(new Pet(name, species, sex, 1, isAvailable));
             dispose();
             JOptionPane.showMessageDialog(null, name
                     + " has been added to the shelter successfully!");
