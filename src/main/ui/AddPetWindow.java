@@ -56,7 +56,7 @@ public class AddPetWindow extends JFrame implements ActionListener {
     // Effects: Set up the background image of the window.
     private void setBackgroundImage() {
         try {
-            BufferedImage backgroundImage = ImageIO.read(new File("src/main/ui/images/PetShelter.png"));
+            BufferedImage backgroundImage = ImageIO.read(new File("data/images/PetShelter.png"));
             setContentPane(new BackgroundImage(backgroundImage));
         } catch (IOException e) {
             e.printStackTrace();

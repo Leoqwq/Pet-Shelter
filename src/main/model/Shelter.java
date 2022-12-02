@@ -24,6 +24,8 @@ public class Shelter implements Writable {
             if (pet.getName().equals(name)) {
                 if (pet.getIsAvailable()) {
                     listOfPet.remove(pet);
+                    EventLog.getInstance().logEvent(new Event(pet.getName()
+                            + " adopted and removed from the shelter."));
                     return pet.getName() + " has been successfully adopted!";
                 } else {
                     throw new PetNotAvailableException("Sorry, " + pet.getName()
@@ -38,6 +40,7 @@ public class Shelter implements Writable {
     // EFFECTS: Adds a pet to listOfPet
     public void addPet(Pet pet) {
         listOfPet.add(pet);
+        EventLog.getInstance().logEvent(new Event(pet.getName() + " added to the shelter."));
     }
 
     // MODIFIES: pet

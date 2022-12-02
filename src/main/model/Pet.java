@@ -30,6 +30,7 @@ public class Pet implements Writable {
     // EFFECTS: Changes a pet to available for adoption if it is not available, otherwise do nothing.
     public void markAsAvailable() {
         isAvailable = true;
+        EventLog.getInstance().logEvent(new Event("Marked " + name + " as available."));
     }
 
     // EFFECTS: Returns a string that contains all the information about a pet

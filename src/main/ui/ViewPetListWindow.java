@@ -5,6 +5,8 @@
 
 package ui;
 
+import model.Event;
+import model.EventLog;
 import model.Pet;
 import model.Shelter;
 
@@ -105,6 +107,7 @@ public class ViewPetListWindow extends JFrame implements ActionListener {
             shelter.markPetAsAvailable(shelter.getListOfPets().get(selectedRowIndex).getName());
             table.setValueAt(true, selectedRowIndex, 5);
         } else if (action.equals(VIEW_PET_NUMBER_ACTION)) {
+            EventLog.getInstance().logEvent(new Event("Viewed number of pet in the shelter."));
             JOptionPane.showMessageDialog(null,
                     "The total number of pets in the shelter is: " + shelter.getNumOfPetInShelter());
         }

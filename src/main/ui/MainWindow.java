@@ -5,6 +5,8 @@
 
 package ui;
 
+import model.Event;
+import model.EventLog;
 import model.Shelter;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -19,6 +21,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Iterator;
 
 // Represents the main window of the Pet Shelter Application
 public class MainWindow extends JFrame implements ActionListener {
@@ -114,6 +117,7 @@ public class MainWindow extends JFrame implements ActionListener {
             jsonWriter.write(shelter);
             jsonWriter.close();
             JOptionPane.showMessageDialog(null,"Successfully saved shelter to " + JSON_STORE);
+            EventLog.getInstance().logEvent(new Event("Saved shelter."));
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Unable to write to file: " + JSON_STORE);
         }
@@ -125,6 +129,7 @@ public class MainWindow extends JFrame implements ActionListener {
         try {
             shelter = jsonReader.read();
             JOptionPane.showMessageDialog(null, "Successfully loaded shelter from " + JSON_STORE);
+            EventLog.getInstance().logEvent(new Event("Loaded shelter."));
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Unable to read from file: " + JSON_STORE);
         }
@@ -150,13 +155,22 @@ public class MainWindow extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null, "The shelter is empty!");
             } else {
                 viewPetListWindow = new ViewPetListWindow(shelter);
+                EventLog.getInstance().logEvent(new Event("Viewed Pet List."));
             }
         } else if (action.equals(SAVE_ACTION)) {
             saveShelter();
         } else if (action.equals(LOAD_ACTION)) {
             loadShelter();
         } else if (action.equals(QUIT_ACTION)) {
+            EventLog.getInstance().logEvent(new Event("Quit the application."));
             dispose();
+            printLog(EventLog.getInstance());
+        }
+    }
+
+    public void printLog(EventLog el) {
+        for (Event e : el) {
+            System.out.println(e.toString() + "\n");
         }
     }
 
