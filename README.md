@@ -72,3 +72,14 @@ Saved shelter.
 >
 >Thu Dec 01 19:37:36 PST 2022 \
 Quit the application.
+
+## Phase 4: Task 3
+> *If you had more time to work on the project, is there any refactoring that you would do to improve your design?*
+> 
+> > - Since I have window classes all share similar methods, I would consider to design an interface.
+> > So that each window class could implement that interface to achieve abstraction.
+> > - Currently, if the user tries to adopt a pet while the *ViewPetListWindow* is open, the list won't change unless
+> > the user closes and reopen the *ViewPetListWindow* to refresh the list.
+> > I would probably figure out a way to adopt a pet directly in the *ViewPetListWindow*, so that the user could
+> > adopt the selected pet easily and the pet will be removed from the list as soon as the
+> > action is done without reopen the window.
